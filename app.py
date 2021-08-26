@@ -27,7 +27,7 @@ ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
 
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # port = int(os.environ.get("PORT", 5000))
 
