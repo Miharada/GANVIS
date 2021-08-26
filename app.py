@@ -6,7 +6,7 @@ import numpy as np
 from io import BytesIO
 import base64
 
-import pygad
+# import pygad
 import GenAlg as GA
 
 import matplotlib.pyplot as plt
