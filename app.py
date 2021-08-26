@@ -22,7 +22,7 @@ from sklearn.preprocessing import LabelEncoder
 from werkzeug.utils import secure_filename
 
 #https://flask.palletsprojects.com/en/2.0.x/patterns/fileuploads/
-UPLOAD_FOLDER = "D:/Miharada/Project/Humic/GAnVis/GAnVis Website/Uploaded/"
+UPLOAD_FOLDER = "Uploaded/"
 ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
 
 
