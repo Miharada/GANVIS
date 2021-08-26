@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block graph %}
+
+<div class="form-group">
+    <label for="resultfeatsel">Result</label>
+    <textarea class="form-control" id="resultfeatsel" rows="5">
+      Model: {{model}}
+      Feature Selected: {{feature}}
+      MSE: {{mse[-1]}}
+      Max Accuracy: {{max_acc}}
+      Average Accuracy: {{avg_acc_list[-1]}}
+    </textarea>
+</div>
+
+<img src='data:image/png;base64,{{hasilgraph}}'/>"
+<!-- https://codepen.io/Shokeen/pen/rywxmY -->
+  <!-- <canvas id="lineChart" width="900" height="400"></canvas>
+  <script>
+  var ctx = document.getElementById('lineChart').getContext('2d');
+  var lineChart = new Chart(ctx, {
+      type: "line",
+      data: {
+          labels: {{ xaxis | safe}},
+          datasets: [
+              {
+                  label: "Avg Accuracy",
+                  data: {{ avg_acc_list | safe }},
+                  fill: false,
+                  borderColor: "rgb(75, 192, 192)",
+                  lineTension: 0.1
+              }
+          ]
+      },
+      options: {
+          responsive:false
+      }
+  });
+  </script> -->
+{% endblock %}

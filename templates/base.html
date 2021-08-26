@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        
+        <title>Document</title>
+    </head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">GANVIS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Procedure
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="">Feature Selection</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('clusterhome') }}">Clustering</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1>Feature Selection With Genetic Algorithm</h1>
+    <body>
+        <form action="{{ url_for('feat_select') }}" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group row"  style="margin-left: 3px;">
+                <label for="model" class="col-sm-2 col-form-label">Model</label>
+                <div class="col-sm-10">
+                  <select class="form-control-sm" name="model">
+                    <option value="SVC">Support Vector Classifier</option>
+                    <option value="RFC">Random Forest Classifier</option>
+                    <option value="AC">AdaBoost Classifier</option>
+                    <option value="DTC">Decision Tree Classifier</option>
+                  </select>
+                </div>
+              </div>
+
+            <div class="form-group row" style="margin-left: 3px;">
+              <label for="generations" class="col-sm-2 col-form-label">Generation</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="generations" name="generations" placeholder="" min="10" value="{{generation}}">
+              </div>
+            </div>
+            <div class="form-group row" style="margin-left: 3px;">
+                <label for="popsize" class="col-sm-2 col-form-label">Population Size</label>
+                <div class="col-sm-10">
+                  <input required type="number" class="form-control-sm" id="popsize" placeholder="" min="10" value="{{popsize}}" name="popsize">
+                </div>
+            </div>
+            <div class="form-group row" style="margin-left: 3px;">
+                <label for="featurenumber" class="col-sm-2 col-form-label">Feature Number</label>
+                <div class="col-sm-10">
+                  <input required type="number" class="form-control-sm" id="featnum" placeholder="" min="1" value="{{featnum}}" name="featnum">
+                </div>
+            </div>
+            <div class="form-group row-cols-6" style="margin-left: 14px;">
+                <label for="uploadData">Dataset</label>
+                <input required type="file" class="form-control-file" id="uploadData" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 3px;">Submit</button>
+        </form>
+        {% block graph %}
+
+        {% endblock %}
+    </body>
+    </html>
+</html>

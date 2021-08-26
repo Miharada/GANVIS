@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+        <title>Document</title>
+        <style>
+            nav{
+                background-color: #082032;
+            }
+            body{
+              background-color: #2C394B;
+            }
+            h1 {
+              color: #FFFF;
+              margin-left: 50px;
+            }
+            label {
+              color: #FFFF;
+            }
+        </style>
+    </head>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="font-weight: bold; color: white; font-size: 27; font-family: Futura Md BT; margin-left: 50px;">GANVIS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: bold; color: white; font-size: 30; font-family: Futura Md BT;">
+                Procedure
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="{{ url_for('home_page') }}">Feature Selection</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('clusterhome') }}">Clustering</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1>Clustering With Genetic Algorithm</h1>
+    <body>
+        <form action="{{ url_for('clustering') }}" method="POST" enctype="multipart/form-data">
+
+          <div class="form-group row" style="margin-left: 50px;">
+              <label for="cluster" class="col-sm-2 col-form-label">Cluster</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="cluster" name="cluster" placeholder="" min="2" value="{{clusters}}">
+              </div>
+          </div>
+          <div class="form-group row" style="margin-left: 50px;">
+            <label for="generations" class="col-sm-2 col-form-label">Generation</label>
+            <div class="col-sm-10">
+              <input required type="number" class="form-control-sm" id="generations" name="generations" placeholder="" min="10" value="{{generation}}">
+            </div>
+          </div>
+          <div class="form-group row" style="margin-left: 50px;">
+              <label for="popsize" class="col-sm-2 col-form-label">Population Size</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="popsize" placeholder="" min="5" value="{{popsize}}" name="popsize">
+              </div>
+          </div>
+          <div class="form-group row" style="margin-left: 50px;">
+              <label for="parentmating" class="col-sm-2 col-form-label">Num Parent Mating</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="parentmating" placeholder="" min="2" value="{{parentmating}}" name="parentmating">
+              </div>
+          </div>
+          <div class="form-group row" style="margin-left: 50px;">
+              <label for="keepparent" class="col-sm-2 col-form-label">Keep Parent</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="keepparent" placeholder="" min="2" value="{{keepparent}}" name="keepparent">
+              </div>
+          </div>
+          <div class="form-group row" style="margin-left: 50px;">
+              <label for="initlow" class="col-sm-2 col-form-label">Min Number</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="initlow" placeholder="" min="" value="{{initlow}}" name="initlow">
+              </div>
+          </div>
+          <div class="form-group row" style="margin-left: 50px;">
+              <label for="initmax" class="col-sm-2 col-form-label">Max Number</label>
+              <div class="col-sm-10">
+                <input required type="number" class="form-control-sm" id="initmax" placeholder="" min="1" value="{{initmax}}" name="initmax">
+              </div>
+          </div>
+          <div class="form-group row-cols-6" style="margin-left: 63px;">
+              <label for="uploadData">Dataset</label>
+              <input required type="file" class="form-control-file" id="uploadData" name="file">
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-left: 63px;">Submit</button>
+      </form> 
+      {% block graph %}
+
+      {% endblock %}
+    </body>
+    </html>
+</html>

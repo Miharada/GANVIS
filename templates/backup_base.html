@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+        <title>Document</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" id="woy">GAnVis</a>
+            </div>
+        </nav>
+        <h1>Genetic Algorithm</h1>
+
+        <form action="{{ url_for('testing_data') }}" method="post">
+
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <label for="InputGeneration" id="cek">Generation</label>
+                    <input type="number" min="0" class="" id="InputGeneration" name="InputGeneration" value= "{{ generation }}">
+                </div>
+
+                <div class="p-2">
+                    <label for="InputParentsMating">Parents Mating</label>
+                    <input type="number" min="2" class="" id="InputParentsMating" name="InputParentsMating" value="{{ parentMating }}">
+                </div>
+                <div class="p-2">
+                    <label for="InputSol">Solution</label>
+                    <input type="number" class="" id="InputSol" name="InputSol" min="0" value="{{ solution }}">    
+                </div>
+
+                <div class="p-2">
+                    <label for="InputGenes">Genes</label>
+                    <input type="number" class="" id="InputGenes" name="InputGenes" min="0" value="{{ genes }}">    
+                </div>
+
+            </div>
+
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <label for="initLow" id="cek">InitLow</label>
+                    <input type="number" class="" id="initLow" name="initLow" value="{{ low }}">
+                </div>
+
+                <div class="p-2">
+                    <label for="initHigh">InitHigh</label>
+                    <input type="number" class="" id="initHigh" name="initHigh" value="{{ high }}">
+                </div>
+
+                <div class="p-2">
+                    <label for="parentSelection">Parent Selection</label>
+                    <select class="custom-select" id="parentSelection" name="parentSelection">
+                        <option value="0" selected>Steady State</option>
+                        <option value="1">Roulette Wheel</option>
+                        <option value="2">Stochastic Universal</option>
+                        <option value="3">Rank</option>
+                        <option value="4">Random</option>
+                        <option value="5">Tournament</option>
+                    </select>    
+                </div>
+
+                <div class="p-2">
+                    <label for="keepParent">Keep Parent</label>
+                    <input type="number" class="" id="keepParent" name="keepParent" value="{{ keepParent }}" min="-1">
+                </div>
+                
+            </div>
+
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <label for="crossoverType">Crossover Type</label>
+                    <select class="custom-select" id="crossoverType" name="crossoverType">
+                        <option value="0" selected>Steady State</option>
+                        <option value="1">Single Point</option>
+                        <option value="2">Two Points</option>
+                        <option value="3">Uniform</option>
+                        <option value="4">Scattered</option>
+                    </select>    
+                </div>
+
+                <div class="p-2">
+                    <label for="crossoverProb">Crossover Probability</label>
+                    <input type="number" class="" id="crossoverProb" name="crossoverProb" value="{{ crosprob }}" min="0" max="1" step="0.01">
+                </div>
+
+                <div class="p-2">
+                    <label for="mutType">Mutation Type</label>
+                    <select class="custom-select" id="mutType" name="mutType">]
+                        <option value="0" selected>Random</option>
+                        <option value="1">Swap</option>
+                        <option value="2">Inversion</option>
+                        <option value="3">Scramble</option>
+                        <option value="4">Adaptive</option>
+                        <option value="5">None</option>
+                    </select>    
+                </div>
+
+                <div class="p-2">
+                    <label for="mutProb">Mutation Probabilty</label>
+                    <input type="number" class="" id="mutProb" name="mutProb" value="{{ mutProb }}" min="0" max="1" step="0.01">
+                </div>
+                
+            </div>
+            
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <label for="fitness">Fitness Function</label>
+                    <select class="custom-select" id="fitness">
+                        <option selected>Choose</option>
+                        <option value="1">Linear Model</option>
+                        <option value="2">Reproduce Image</option>
+                        <option value="3">Clustering</option>
+                    </select>    
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        {% block graph %}
+
+        {% endblock %}
+    </body>
+    </html>
+</html>
