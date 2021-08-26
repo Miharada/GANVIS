@@ -22,7 +22,7 @@ from sklearn.preprocessing import LabelEncoder
 from werkzeug.utils import secure_filename
 
 #https://flask.palletsprojects.com/en/2.0.x/patterns/fileuploads/
-UPLOAD_FOLDER = "Uploaded/"
+# UPLOAD_FOLDER = "Uploaded/"
 ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
 
 
@@ -56,12 +56,12 @@ def feat_select():
         f = request.files['file']
         if f and allowed_file(f.filename):
             file = secure_filename(f.filename)
-            f.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
+#             f.save(os.path.join(app.config['UPLOAD_FOLDER'], file))
             model = model_selector(models)
             try:
-                df = pd.read_csv(UPLOAD_FOLDER+f.filename)
+                df = pd.read_csv(f)
             except:
-                df = pd.read_excel(UPLOAD_FOLDER+f.filename)
+                df = pd.read_excel(f)
             df.dropna(axis=0, inplace=True)
             labelencoder = LabelEncoder()
             # print(df.dtypes)
