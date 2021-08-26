@@ -29,6 +29,8 @@ ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+port = int(os.environ.get("PORT", 5000))
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -256,4 +258,4 @@ def featureLabeldivider(data):
     return x,y
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=port, debug=True)
