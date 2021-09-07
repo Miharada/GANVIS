@@ -11,22 +11,37 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         
-        <title>Document</title>
+        <title>GANVIS</title>
     </head>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <style>
+      nav{
+          background-color: #082032;
+      }
+      /* body{
+        background-color: #2C394B;
+      }
+      h1 {
+        color: #FFFF;
+        margin-left: 50px; */
+      /* }
+      label {
+        color: #FFFF;
+      } */
+  </style>
+    <nav class="navbar navbar-expand-md navbar-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">GANVIS</a>
+        <a class="navbar-brand" href="#" style="font-weight: bold; color: rgb(134, 124, 124); font-size: 27; font-family: Futura Md BT; margin-left: 50px;">GANVIS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: bold; color: white; font-size: 30; font-family: Futura Md BT;">
                 Procedure
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="">Feature Selection</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('home_page') }}">Feature Selection</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('clusterhome') }}">Clustering</a></li>
               </ul>
             </li>
