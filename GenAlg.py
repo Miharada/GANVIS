@@ -127,7 +127,7 @@ class GA():
         avg_acc_list = []
         pop = self.popinit(x)
         fitness, max_acc, avg_acc = self.fitness(pop,x,y)
-        print('max acc generation - 0 : ',max_acc,' for max feat = ',self.max_feat)
+#         print('max acc generation - 0 : ',max_acc,' for max feat = ',self.max_feat)
         avg_acc_list.append(avg_acc)
         mses = [1/x for x in fitness]
         mse_list.append(np.average(mses))
